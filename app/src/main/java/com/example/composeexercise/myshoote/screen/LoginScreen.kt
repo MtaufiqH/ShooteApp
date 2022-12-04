@@ -24,7 +24,7 @@ import com.example.composeexercise.myshoote.utiliities.ShooteTextField
 import com.example.composeexercise.ui.theme.ComposeExerciseTheme
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(onButtonLoginClicked: () -> Unit) {
     Surface(
         modifier = Modifier
             .fillMaxSize(),
@@ -46,7 +46,7 @@ fun LoginScreen() {
             ShooteTextField(labelText = "Password")
 
             Spacer(modifier = Modifier.height(8.dp))
-            ShooteButton(onClickButton = {}, buttonText = R.string.log_in_title)
+            ShooteButton(onClickButton = onButtonLoginClicked, buttonText = R.string.log_in_title)
 
             SignUpLabel()
         }
@@ -96,7 +96,7 @@ fun LoginBackground(modifier: Modifier = Modifier) {
 @Composable
 fun LightPreviewLogin() {
     ComposeExerciseTheme {
-        LoginScreen()
+        LoginScreen {}
     }
 }
 
@@ -104,7 +104,7 @@ fun LightPreviewLogin() {
 @Composable
 fun DarkPreviewLogin() {
     ComposeExerciseTheme() {
-        LoginScreen()
+        LoginScreen {}
     }
 
 }

@@ -20,7 +20,7 @@ import com.example.composeexercise.myshoote.utiliities.ShooteButton
 import com.example.composeexercise.ui.theme.ComposeExerciseTheme
 
 @Composable
-fun WelcomeScreen(modifier: Modifier = Modifier) {
+fun WelcomeScreen(modifier: Modifier = Modifier, onButtonLoginClick: () -> Unit) {
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -29,7 +29,8 @@ fun WelcomeScreen(modifier: Modifier = Modifier) {
         WelcomeBackground()
         ButtonColumn(
             modifier = Modifier
-                .align(Center)
+                .align(Center),
+            onButtonLoginClick
         )
 
     }
@@ -37,7 +38,7 @@ fun WelcomeScreen(modifier: Modifier = Modifier) {
 }
 
 @Composable
-private fun ButtonColumn(modifier: Modifier) {
+private fun ButtonColumn(modifier: Modifier, loginButtonClick: () -> Unit) {
     Column(
         horizontalAlignment = CenterHorizontally,
         modifier = modifier
@@ -51,7 +52,7 @@ private fun ButtonColumn(modifier: Modifier) {
         )
         Spacer(modifier = Modifier.height(8.dp))
         ShooteButton(
-            onClickButton = {},
+            onClickButton = loginButtonClick,
             buttonText = R.string.log_in_title,
             buttonColor = MaterialTheme.colors.secondary
         )
@@ -94,7 +95,7 @@ private fun WelcomeBackground() {
 @Composable
 fun LightPreview() {
     ComposeExerciseTheme {
-        WelcomeScreen()
+        WelcomeScreen {}
     }
 }
 
@@ -102,6 +103,6 @@ fun LightPreview() {
 @Composable
 fun DarkPreview() {
     ComposeExerciseTheme {
-        WelcomeScreen()
+        WelcomeScreen {}
     }
 }
